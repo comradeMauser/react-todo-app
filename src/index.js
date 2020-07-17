@@ -2,16 +2,40 @@ import React from "react";
 import ReactDom from "react-dom"
 
 
-const element = (
-    <div>
+const Header = () => {
+    return (
         <h1>Heavy Metal!</h1>
-        <input placeholder={"search"}/>
-        <ul>
-            <li>drink all coffee</li>
-            <li>run in circles and scream</li>
-            <li>do something</li>
-        </ul>
-    </div>
-);
+    )
+}
 
-ReactDom.render(element, document.getElementById("root"))
+const SearchPanel = () => {
+    return (
+        <div>
+            <input placeholder="search"/>
+        </div>
+    )
+}
+
+const TodoList = () => {
+    return (
+        <div>
+            <ul>
+                <li>drink all coffee</li>
+                <li>run in circles and scream</li>
+                <li>do something</li>
+            </ul>
+        </div>
+    )
+}
+
+const App = () => {
+    return(
+        <div>
+            <Header/>
+            <SearchPanel/>
+            <TodoList/>
+        </div>
+    )
+}
+
+ReactDom.render(App(), document.getElementById("root"))
