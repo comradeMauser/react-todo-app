@@ -3,8 +3,12 @@ import ReactDom from "react-dom"
 
 
 const Header = () => {
+    const date = new Date().toLocaleString()
     return (
-        <h1>Heavy Metal!</h1>
+        <div>
+            <h1>Heavy Metal!</h1>
+            <p>today is {date}</p>
+        </div>
     )
 }
 
@@ -17,19 +21,24 @@ const SearchPanel = () => {
 }
 
 const TodoList = () => {
+    const items = [
+        "drink all coffee",
+        "run in circles and scream",
+        "do something"
+    ]
     return (
         <div>
             <ul>
-                <li>drink all coffee</li>
-                <li>run in circles and scream</li>
-                <li>do something</li>
+                <li>{items[0]}</li>
+                <li>{items[1]}</li>
+                <li>{items[2]}</li>
             </ul>
         </div>
     )
 }
 
 const App = () => {
-    return(
+    return (
         <div>
             <Header/>
             <SearchPanel/>
