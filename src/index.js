@@ -4,8 +4,13 @@ import ReactDom from "react-dom"
 
 const Header = () => {
     const date = new Date().toLocaleString()
+    const styles = {
+        fontSize: "20px",
+        color: "red",
+        marginLeft: "30px",
+    }
     return (
-        <div>
+        <div style={styles}>
             <h1>Heavy Metal!</h1>
             <p>today is {date}</p>
         </div>
