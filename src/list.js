@@ -3,9 +3,9 @@ import ListItem from "./list-item";
 
 const List = () => {
     const items = [
-        "drink all coffee",
-        "run in circles and scream",
-        "do something"
+        {label: "drink all coffee", important: true},
+        {label: "run in circles and scream", important: false},
+        {label: "do something", important: false},
     ]
     return (
         <div>

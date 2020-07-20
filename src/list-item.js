@@ -1,7 +1,12 @@
 import React from 'react';
 
 const ListItem = (props) => {
-    return <span>{props.item}</span>
+
+    const styleListItem = {
+        color : props.item.important ? "red" : "black"
+    }
+
+    return <span style={styleListItem}>{props.item.label}</span>
 
 };
 
