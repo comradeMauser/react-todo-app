@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from "./list-item";
+import "./list.css";
 
 const List = () => {
     const elements = [
@@ -9,7 +10,7 @@ const List = () => {
     ]
     return (
         <div>
-            <ul>
+            <ul className={"list-group"}>
                 <ListItem elements={elements}/>
             </ul>
         </div>
