@@ -8,10 +8,18 @@ const Header = () => {
         marginLeft: "30px",
     }
 
+    //temporary plug
+    const undone = 22;
+    const done = 33;
+
     return (
         <div style={styles}>
             <h1>Heavy Metal!</h1>
-            <p>today is {date}</p>
+            <div>today is {date}
+                <p>
+                    you have {undone} undone tasks and {done} is complete
+                </p>
+            </div>
         </div>
     )
 };
