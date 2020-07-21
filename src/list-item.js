@@ -1,9 +1,8 @@
 import React from 'react';
 
-const ListItem = (props) => {
+const ListItem = ({elements}) => {
 
-
-    const items = props.items.map((item) => {
+    const items = elements.map((item) => {
 
         const styleListItem = {
             color: item.important ? "red" : "black"
@@ -12,7 +11,6 @@ const ListItem = (props) => {
     })
 
     return <span>{items}</span>
-    // return <span style={styleListItem}>{props.items.label}</span>
 
 };
 

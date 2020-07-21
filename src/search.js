@@ -6,6 +6,7 @@ const SearchPanel = () => {
             <input placeholder="search"/>
         </div>
     )
-}
+};
+
 
 export default SearchPanel;
