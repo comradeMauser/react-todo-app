@@ -3,14 +3,14 @@ import ListItem from "./list-item";
 
 const List = () => {
     const elements = [
-        {label: "drink all coffee", important: true},
-        {label: "run in circles and scream", important: false},
-        {label: "do something", important: false},
+        {id: 0, label: "drink all coffee", important: true},
+        {id: 1, label: "run in circles and scream", important: false},
+        {id: 2, label: "do something", important: false},
     ]
     return (
         <div>
             <ul>
-                <li><ListItem items={elements}/></li>
+                <ListItem elements={elements}/>
             </ul>
         </div>
     )
