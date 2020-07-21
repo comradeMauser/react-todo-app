@@ -4,7 +4,7 @@ const Header = () => {
     const date = new Date().toLocaleString()
     const styles = {
         fontSize: "20px",
-        color: "red",
+        // color: "red",
         marginLeft: "30px",
     }
     return (

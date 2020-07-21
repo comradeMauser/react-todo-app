@@ -10,9 +10,7 @@ const List = () => {
     return (
         <div>
             <ul>
-                <li><ListItem item={items[0]}/></li>
-                <li><ListItem item={items[1]}/></li>
-                <li><ListItem item={items[2]}/></li>
+                <li><ListItem items={items}/></li>
             </ul>
         </div>
     )

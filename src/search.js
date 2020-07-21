@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchPanel = () => {
     return (
-        <div>
+        <div style={{marginLeft: "20px"}}>
             <input placeholder="search"/>
         </div>
     )
