@@ -12,7 +12,7 @@ const ListItem = ({elements}) => {
 
             }
 
-            return <li className={"list-group-item"}
+            return <li className="list-group-item"
                        key={item.id}
                        style={styleListItem}
             >

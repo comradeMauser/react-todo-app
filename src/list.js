@@ -10,7 +10,7 @@ const List = () => {
     ]
     return (
         <div>
-            <ul className={"list-group"}>
+            <ul className="list-group">
                 <ListItem elements={elements}/>
             </ul>
         </div>

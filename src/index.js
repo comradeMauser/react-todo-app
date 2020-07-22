@@ -7,7 +7,7 @@ import List from "./list";
 
 const App = () => {
     return (
-        <div>
+        <div className="container">
             <Header/>
             <SearchPanel/>
             <List/>

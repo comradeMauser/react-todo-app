@@ -13,11 +13,10 @@ const Header = () => {
 
     return (
         <div style={styles}>
-            <h1>Heavy Metal!</h1>
-            <div>today is {date}
-                <p>
-                    you have {undone} undone tasks and {done} is complete
-                </p>
+            <h1 className="text-center">Heavy Metal!</h1>
+            <div className="row">
+                <span className="col">today is {date}</span>
+                <span className="col text-right">you have {undone} undone tasks and {done} is complete</span>
             </div>
         </div>
     )
