@@ -15,6 +15,6 @@ const List = () => {
             </ul>
         </div>
     )
-}
+};
 
 export default List;

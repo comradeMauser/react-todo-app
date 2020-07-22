@@ -4,7 +4,6 @@ const Header = () => {
     const date = new Date().toLocaleString()
     const styles = {
         fontSize: "20px",
-        // color: "red",
         marginLeft: "30px",
     }
 
@@ -23,6 +22,5 @@ const Header = () => {
         </div>
     )
 };
-
 
 export default Header;
