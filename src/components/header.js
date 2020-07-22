@@ -4,7 +4,6 @@ const Header = () => {
     const date = new Date().toLocaleString()
     const styles = {
         fontSize: "20px",
-        marginLeft: "30px",
     }
 
     //temporary plug

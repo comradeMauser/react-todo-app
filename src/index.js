@@ -1,18 +1,5 @@
-import React from "react";
+// import React from "react";
 import ReactDom from "react-dom"
-import Header from "./header";
-import SearchPanel from "./search";
-import List from "./list";
-
-
-const App = () => {
-    return (
-        <div className="container">
-            <Header/>
-            <SearchPanel/>
-            <List/>
-        </div>
-    )
-}
+import App from "./components/app";
 
 ReactDom.render(App(), document.getElementById("root"))
