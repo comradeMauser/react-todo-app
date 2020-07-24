@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import "./list-item.css";
 
-const ListItem = ({elements}) => {
+export default class ListItem extends Component {
 
-    const items = elements.map((item) => {
+    render() {
+        const {elements} = this.props
+
+        const items = elements.map((item) => {
 
             const styleListItem = {
                 color: item.important ? "red" : "black",
@@ -12,9 +15,14 @@ const ListItem = ({elements}) => {
 
             }
 
+            const onElementClick = () => {
+                console.debug((item.label.toUpperCase().split("").reverse().join("")))
+            }
+
             return <li className="list-group-item"
                        key={item.id}
                        style={styleListItem}
+                       onClick={onElementClick}
             >
                 <div className="row">
                     <div className="col"> {item.label} </div>
@@ -32,10 +40,9 @@ const ListItem = ({elements}) => {
                     </div>
                 </div>
             </li>
-        }
-    )
+        })
 
-    return <span>{items}</span>
-};
+        return <span>{items}</span>
+    }
+}
 
-export default ListItem;
