@@ -28,7 +28,8 @@ const ItemButtons = (props) => {
 
             {/*Delete case*/}
             <div className="col-auto">
-                <button className="btn btn-outline-secondary float-right" type="button">
+                <button className="btn btn-outline-secondary float-right" type="button"
+                onClick={trash}>
                     <i className="fa fa-trash"> </i>
                 </button>
             </div>

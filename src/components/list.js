@@ -10,14 +10,15 @@ const List = () => {
         {id: 2, label: "do something", important: false},
         {id: 3, label: "sum summus mus", important: false},
 
-    ]
+    ];
+
     const list = elements.map((element) => {
         return (
             <span key={element.id}>
                 <ListItem {...element}/>
             </span>
         )
-    })
+    });
 
     return (
         <div>
