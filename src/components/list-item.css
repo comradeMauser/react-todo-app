@@ -1,17 +1,15 @@
 .list-group-item .row .col {
-    /*color: darkgoldenrod;*/
-    margin: 1%;
+    color: cadetblue;
+    margin: 0.5%;
 }
-.list-group-item .row .col.done{
+
+.list-group-item .row .col.done {
     color: darkgoldenrod;
     margin: 1%;
     text-decoration-line: line-through;
 }
-.list-group-item .row.done{
-    color: darkgoldenrod;
-    text-decoration-line: line-through;
-}
-.list-group-item .done{
+
+.list-group-item .done {
     color: aqua;
     margin: 1%;
     text-decoration-line: line-through;
