@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./header";
-import SearchPanel from "./search";
+import SearchPanel from "./search-panel";
 import List from "./list";
 
 

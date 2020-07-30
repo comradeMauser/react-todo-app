@@ -2,8 +2,9 @@ import React from 'react';
 
 const ItemButtons = (props) => {
 
-    const trash = () => {
-        console.log("THRAASH!!1")
+    const trash = (str) => {
+        console.log(str, props.id)
+        // console.log("THRAASH!!1")
     };
 
     return (
@@ -12,7 +13,7 @@ const ItemButtons = (props) => {
             {/*Important case*/}
             <div className="col-auto">
                 <button className="btn btn-outline-warning float-right" type="button"
-                onClick={props.check}>
+                        onClick={props.check}>
                     <i className="fa fa-star"> </i>
                 </button>
             </div>
@@ -20,7 +21,9 @@ const ItemButtons = (props) => {
             {/*Completed case*/}
             <div className="col-auto">
                 <button className="btn btn-outline-success float-right" type="button"
-                        onClick={()=>{console.log("check")}}
+                        onClick={() => {
+                            console.log("check", props.id)
+                        }}
                 >
                     <i className="fa fa-check"> </i>
                 </button>
@@ -29,7 +32,9 @@ const ItemButtons = (props) => {
             {/*Delete case*/}
             <div className="col-auto">
                 <button className="btn btn-outline-secondary float-right" type="button"
-                onClick={trash}>
+                        onClick={() => {
+                            trash("trash", props.id)
+                        }}>
                     <i className="fa fa-trash"> </i>
                 </button>
             </div>

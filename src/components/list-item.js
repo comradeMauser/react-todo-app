@@ -2,21 +2,27 @@ import React from 'react';
 import ItemButtons from "./item-buttons";
 import "./list-item.css"
 
-const ListItem = (props) => {
-    const {label} = props
+export default class ListItem extends React.Component {
 
-    const star = () => {
-        console.log("star")
-    }
+    render() {
+        const {label, important, id, star} = this.props
+        const style = {
+            color: important ? "red" : "",
+            fontWeight: important ? "bold" : "",
+            fontSize: important ? "30px" : "",
 
-    return (
-        <div className="list-group-item">
-            <div className="row">
-                <span className="col">{label}</span>
-                <span className="col"><ItemButtons check={star}/></span>
+        }
+
+
+        return (
+            <div className="list-group-item">
+                <div className="row">
+                <span className="col" style={style} onClick={() => {star()}}>
+                    {label}
+                </span>
+                    <span className="col"><ItemButtons check={star} id={id}/></span>
+                </div>
             </div>
-        </div>
-    );
-};
-
-export default ListItem;
+        );
+    }
+}
