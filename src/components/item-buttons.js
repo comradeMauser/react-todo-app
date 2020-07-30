@@ -4,7 +4,6 @@ const ItemButtons = (props) => {
 
     const trash = (str) => {
         console.log(str, props.id)
-        // console.log("THRAASH!!1")
     };
 
     return (
