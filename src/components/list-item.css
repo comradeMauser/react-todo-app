@@ -14,18 +14,3 @@
 .col.done{
     text-decoration-line: line-through;
 }
-
-
-/*
-
-.list-group-item .row .col.done {
-    color: darkgoldenrod;
-    margin: 1%;
-    text-decoration-line: line-through;
-}
-
-.list-group-item .done {
-    color: aqua;
-    margin: 1%;
-    text-decoration-line: line-through;
-}*/
