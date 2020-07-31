@@ -12,7 +12,9 @@ const ItemButtons = (props) => {
             {/*Important case*/}
             <div className="col-auto">
                 <button className="btn btn-outline-warning float-right" type="button"
-                        onClick={props.check}>
+                        onClick={()=>{
+                            console.log("star", props.id)
+                        }}>
                     <i className="fa fa-star"> </i>
                 </button>
             </div>
@@ -21,7 +23,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-success float-right" type="button"
                         onClick={() => {
-                            console.log("check", props.id)
+                            props.check();
                         }}
                 >
                     <i className="fa fa-check"> </i>

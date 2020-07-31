@@ -1,7 +1,22 @@
+.list-group-item {
+    border-color: #515151;
+}
+.list-group-item.done {
+    border-color: #515151;
+    text-decoration-line: line-through;
+}
+
 .list-group-item .row .col {
-    color: cadetblue;
+    color: antiquewhite;
     margin: 0.5%;
 }
+
+.col.done{
+    text-decoration-line: line-through;
+}
+
+
+/*
 
 .list-group-item .row .col.done {
     color: darkgoldenrod;
@@ -13,4 +28,4 @@
     color: aqua;
     margin: 1%;
     text-decoration-line: line-through;
-}
+}*/
