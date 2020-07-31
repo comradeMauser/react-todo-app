@@ -24,8 +24,7 @@ const ItemButtons = (props) => {
                 <button className="btn btn-outline-success float-right" type="button"
                         onClick={() => {
                             props.check();
-                        }}
-                >
+                        }}>
                     <i className="fa fa-check"> </i>
                 </button>
             </div>

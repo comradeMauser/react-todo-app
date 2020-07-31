@@ -11,6 +11,7 @@ export default class ListItem extends React.Component {
             done: false
         }
 
+        // end column style changes
         this.check = () => {
             console.log("check", this.props.id);
             this.setState(({done})=>{
@@ -23,9 +24,8 @@ export default class ListItem extends React.Component {
 
     render() {
         const {label, important, id} = this.props
-        // const
 
-        let colClassNames = "col"
+        let colClassNames = "col" //end column style
         if (this.state.done) {
             colClassNames += " done"
         }
@@ -44,8 +44,7 @@ export default class ListItem extends React.Component {
                 <span className={colClassNames} style={style}
                       onClick={() => {
                           this.check()
-                      }}
-                >
+                      }}>
                     {label}
                 </span>
                     <span className="col"><ItemButtons check={this.check} id={id}/></span>
