@@ -7,19 +7,16 @@ const List = () => {
         const elements = [
             {id: 0, label: "drink all coffee", important: true},
             {id: 1, label: "run in circles and scream", important: false},
-            {id: 2, label: "do something", important: true},
+            {id: 2, label: "do something", important: false},
             {id: 3, label: "sum summus mus", important: false},
 
         ];
 
         const list = elements.map((element) => {
 
-            const star = () => {
-                console.log("star", element.id)
-            }
             return (
                 <span key={element.id}>
-                <ListItem {...element} star={star}/>
+                <ListItem {...element}/>
             </span>
             )
         });
