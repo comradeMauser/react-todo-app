@@ -1,16 +1,19 @@
 .list-group-item {
     border-color: #515151;
-}
-.list-group-item.done {
-    border-color: #515151;
-    text-decoration-line: line-through;
+    color: antiquewhite;
+
 }
 
 .list-group-item .row .col {
-    color: antiquewhite;
     margin: 0.5%;
 }
 
-.col.done{
+.col.done {
     text-decoration-line: line-through;
+}
+
+.col.important {
+    color: red;
+    font-size: 120%;
+    font-weight: bold;
 }
