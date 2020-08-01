@@ -4,50 +4,65 @@ import "./list-item.css"
 
 export default class ListItem extends React.Component {
 
+
     constructor() {
         super();
 
         this.state = {
-            done: false
+            done: false,
+            important: false,
         }
 
-        // end column style changes
+        // end column style changes to completed
         this.check = () => {
             console.log("check", this.props.id);
-            this.setState(({done})=>{
-                return{
+            this.setState(({done}) => {
+                return {
                     done: !done
+                }
+            })
+        }
+
+        // end column style changes to important
+        this.star = () => {
+            console.log("star", this.props.id);
+            this.setState(({important}) => {
+                return {
+                    important: !important
                 }
             })
         }
     }
 
     render() {
-        const {label, important, id} = this.props
+        const {label, id} = this.props
 
-        let colClassNames = "col" //end column style
+        //end column style
+        let colClassNames = "col"
         if (this.state.done) {
             colClassNames += " done"
         }
-
-        const style = {
-            color: important ? "red" : "",
-            fontWeight: important ? "bold" : "",
-            fontSize: important ? "30px" : "",
-
+        if (this.state.important) {
+            colClassNames += " important"
         }
+
+        // const style = {
+        //     color: important ? "red" : "",
+        //     fontWeight: important ? "bold" : "",
+        //     fontSize: important ? "120%" : "",
+        // }
 
 
         return (
             <div className="list-group-item">
                 <div className="row">
-                <span className={colClassNames} style={style}
+                <span className={colClassNames}
                       onClick={() => {
                           this.check()
                       }}>
                     {label}
                 </span>
-                    <span className="col"><ItemButtons check={this.check} id={id}/></span>
+                    <span className="col"><ItemButtons check={this.check} star={this.star} id={id}/></span>
                 </div>
             </div>
         );

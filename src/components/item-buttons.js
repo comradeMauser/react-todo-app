@@ -12,8 +12,8 @@ const ItemButtons = (props) => {
             {/*Important case*/}
             <div className="col-auto">
                 <button className="btn btn-outline-warning float-right" type="button"
-                        onClick={()=>{
-                            console.log("star", props.id)
+                        onClick={() => {
+                            props.star()
                         }}>
                     <i className="fa fa-star"> </i>
                 </button>
@@ -23,7 +23,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-success float-right" type="button"
                         onClick={() => {
-                            props.check();
+                            props.check()
                         }}>
                     <i className="fa fa-check"> </i>
                 </button>
