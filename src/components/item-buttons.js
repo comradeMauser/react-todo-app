@@ -2,10 +2,6 @@ import React from 'react';
 
 const ItemButtons = (props) => {
 
-    const trash = (str) => {
-        console.log(str, props.id)
-    };
-
     return (
         <div className="row float-right">
 
@@ -33,7 +29,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-secondary float-right" type="button"
                         onClick={() => {
-                            trash("trash", props.id)
+                            props.trash()
                         }}>
                     <i className="fa fa-trash"> </i>
                 </button>

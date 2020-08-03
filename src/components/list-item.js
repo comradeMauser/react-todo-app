@@ -4,7 +4,6 @@ import "./list-item.css"
 
 export default class ListItem extends React.Component {
 
-
     constructor() {
         super();
 
@@ -15,7 +14,7 @@ export default class ListItem extends React.Component {
 
         // end column style changes to completed
         this.check = () => {
-            console.log("check", this.props.id);
+            console.log("check", this.props.id, "class ListItem");
             this.setState(({done}) => {
                 return {
                     done: !done
@@ -25,7 +24,7 @@ export default class ListItem extends React.Component {
 
         // end column style changes to important
         this.star = () => {
-            console.log("star", this.props.id);
+            console.log("star", this.props.id, "class ListItem");
             this.setState(({important}) => {
                 return {
                     important: !important
@@ -34,23 +33,18 @@ export default class ListItem extends React.Component {
         }
     }
 
+
     render() {
-        const {label, id} = this.props
+        const {label, id, onDeleted} = this.props
 
         //end column style
-        let colClassNames = "col"
+        let colClassNames = "col my-auto"
         if (this.state.done) {
             colClassNames += " done"
         }
         if (this.state.important) {
             colClassNames += " important"
         }
-
-        // const style = {
-        //     color: important ? "red" : "",
-        //     fontWeight: important ? "bold" : "",
-        //     fontSize: important ? "120%" : "",
-        // }
 
 
         return (
@@ -62,7 +56,9 @@ export default class ListItem extends React.Component {
                       }}>
                     {label}
                 </span>
-                    <span className="col"><ItemButtons check={this.check} star={this.star} id={id}/></span>
+                    <span className="col">
+                        <ItemButtons check={this.check} star={this.star} id={id} trash={onDeleted}/>
+                    </span>
                 </div>
             </div>
         );

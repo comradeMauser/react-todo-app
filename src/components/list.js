@@ -2,20 +2,15 @@ import React from 'react';
 import ListItem from "./list-item";
 import "./list.css";
 
-const List = () => {
+const List = (props) => {
 
-        const elements = [
-            {id: 0, label: "drink all coffee"},
-            {id: 1, label: "run in circles and scream"},
-            {id: 2, label: "do something"},
-            {id: 3, label: "sum summus mus"},
-        ];
+        const {listElements, onDeleted} = props
 
-        const list = elements.map((element) => {
+        const list = listElements.map((element) => {
 
             return (
                 <span key={element.id}>
-                <ListItem {...element}/>
+                <ListItem {...element} onDeleted={()=>{onDeleted(element.id)}}/>
             </span>
             )
         });
