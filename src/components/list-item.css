@@ -1,11 +1,6 @@
 .list-group-item {
     border-color: #515151;
     color: antiquewhite;
-
-}
-
-.list-group-item .row .col {
-    margin: 0.5%;
 }
 
 .col.done {
