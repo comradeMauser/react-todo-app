@@ -2,63 +2,66 @@ import React from 'react';
 import ItemButtons from "./item-buttons";
 import "./list-item.css"
 
-export default class ListItem extends React.Component {
+const ListItem = (props) => {
+    /*
 
-    constructor() {
-        super();
+        constructor() {
+            super();
 
-        this.state = {
-            done: false,
-            important: false,
+            this.state = {
+                done: false,
+                important: false,
+            }
+
+            // end column style changes to completed
+            this.check = () => {
+                console.log("check", this.props.id, "class ListItem");
+                this.setState(({done}) => {
+                    return {
+                        done: !done
+                    }
+                })
+            }
+
+            // end column style changes to important
+            this.star = () => {
+                console.log("star", this.props.id, "class ListItem");
+                this.setState(({important}) => {
+                    return {
+                        important: !important
+                    }
+                })
+            }
         }
+    */
 
-        // end column style changes to completed
-        this.check = () => {
-            console.log("check", this.props.id, "class ListItem");
-            this.setState(({done}) => {
-                return {
-                    done: !done
-                }
-            })
-        }
+    const {star, check, onDeleted, label, important, done} = props
 
-        // end column style changes to important
-        this.star = () => {
-            console.log("star", this.props.id, "class ListItem");
-            this.setState(({important}) => {
-                return {
-                    important: !important
-                }
-            })
-        }
+    //end column style
+    let colClassNames = "col my-auto"
+    if (done) {
+        colClassNames += " done"
+    }
+    if (important) {
+        colClassNames += " important"
     }
 
 
-    render() {
-        const {label, star, check, onDeleted} = this.props
-
-        //end column style
-        let colClassNames = "col my-auto"
-        if (this.state.done) {
-            colClassNames += " done"
-        }
-        if (this.state.important) {
-            colClassNames += " important"
-        }
-
-
-        return (
-            <div className="list-group-item">
-                <div className="row">
+    return (
+        <div className="list-group-item">
+            <div className="row">
                 <span className={colClassNames}
-                      onClick={() => {check()}}>
+                      onClick={() => {
+                          check()
+                      }}>
                     {label}
                 </span>
-                    <span className="col">
+                <span className="col">
                         <ItemButtons check={check} star={star} trash={onDeleted}/>
                     </span>
-                </div>
             </div>
-        );
-    }
-}
+        </div>
+    )
+};
+
+export default ListItem

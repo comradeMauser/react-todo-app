@@ -8,14 +8,26 @@ import List from "./list";
 export default class App extends React.Component {
     constructor() {
         super();
-        this.syntheticId = 99
+
+        this.syntheticId = 0;
+
+        //create new element
+        this.createElement = (label = "default message") => {
+            return {
+                label: `${this.syntheticId} - ${label}`,
+                id: this.syntheticId++,
+                important: false,
+                done: false
+            }
+        }
 
         this.state = {
             elements: [
-                {id: 0, label: "drink all coffee", done: false},
-                {id: 1, label: "run in circles and scream", done: false},
-                {id: 2, label: "do something", done: false},
-                {id: 3, label: "sum summus mus", done: false},
+                this.createElement("drink all coffee"),
+                this.createElement("run in circles and scream"),
+                this.createElement("do something"),
+                this.createElement(),
+                this.createElement(this.syntheticId),
             ]
         };
 
@@ -35,14 +47,11 @@ export default class App extends React.Component {
             )
         }
 
-        //adds new element to state
-        this.elementAdd = () => {
-            console.debug(`${this.syntheticId} shit added(App class)`)
 
-            const newElement = {
-                label: `a new one ${this.syntheticId}`,
-                id: this.syntheticId++,
-            }
+        //adds new element to state with createElement()
+        this.elementAdd = (text) => {
+            const newElement = this.createElement(text)
+
             this.setState(({elements}) => {
                 const result = [...elements, newElement]
                 return {
@@ -52,11 +61,12 @@ export default class App extends React.Component {
         }
 
         this.selectorDone = (id) => {
-            console.error(id, "Done")
+            console.error(id, "Done");
+
         }
 
         this.selectorImportant = (id) => {
-            console.error(id, "Important")
+            console.error(id, "Important");
         }
 
     }
@@ -70,11 +80,9 @@ export default class App extends React.Component {
                 <Header undone={elements.length}/>
                 <SearchPanel/>
                 <List listElements={elements}
-                      onDeleted={(id) => {
-                          this.elementDelete(id)
-                      }}
-                check={this.selectorDone}
-                star={this.selectorImportant}/>
+                      onDeleted={(id) => {this.elementDelete(id)}}
+                      check={this.selectorDone}
+                      star={this.selectorImportant}/>
                 <AddButton add={this.elementAdd}/>
             </div>
         )
