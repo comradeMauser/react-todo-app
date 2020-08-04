@@ -35,7 +35,7 @@ export default class ListItem extends React.Component {
 
 
     render() {
-        const {label, id, onDeleted} = this.props
+        const {label, star, check, onDeleted} = this.props
 
         //end column style
         let colClassNames = "col my-auto"
@@ -51,13 +51,11 @@ export default class ListItem extends React.Component {
             <div className="list-group-item">
                 <div className="row">
                 <span className={colClassNames}
-                      onClick={() => {
-                          this.check()
-                      }}>
+                      onClick={() => {check()}}>
                     {label}
                 </span>
                     <span className="col">
-                        <ItemButtons check={this.check} star={this.star} id={id} trash={onDeleted}/>
+                        <ItemButtons check={check} star={star} trash={onDeleted}/>
                     </span>
                 </div>
             </div>

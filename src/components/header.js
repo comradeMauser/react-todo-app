@@ -1,18 +1,13 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({undone}) => {
     const date = new Date().toLocaleString()
-    const styles = {
-        fontSize: "20px",
-        // color: "red"
-    }
 
     //temporary plug
-    const undone = 22;
     const done = 33;
 
     return (
-        <div style={styles}>
+        <div>
             <h1 className="text-center" style={{color:"red"}}>suffering list</h1>
             <div className="row">
                 <span className="col">today is {date}</span>
