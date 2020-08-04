@@ -35,7 +35,7 @@ export default class App extends React.Component {
         this.elementDelete = (id) => {
             console.debug("deleted:", id)
             this.setState(({elements}) => {
-                    const index = elements.findIndex((element) => element.id === id);
+                    const index = elements.findIndex((element) => element.id === id)
                     const result = [
                         ...elements.slice(0, index),
                         ...elements.slice(index + 1)
@@ -63,6 +63,23 @@ export default class App extends React.Component {
         this.selectorDone = (id) => {
             console.error(id, "Done");
 
+            this.setState(({elements}) => {
+                const index = elements.findIndex((element) => element.id === id)
+                const prevElement = elements[index]
+                const newElement = {...prevElement, done: !prevElement.done}
+
+                const result = [
+                    ...elements.slice(0, index),
+                    newElement,
+                    ...elements.slice(index + 1)
+                ]
+
+                return{
+                    elements: result
+                }
+            })
+
+
         }
 
         this.selectorImportant = (id) => {
@@ -80,7 +97,9 @@ export default class App extends React.Component {
                 <Header undone={elements.length}/>
                 <SearchPanel/>
                 <List listElements={elements}
-                      onDeleted={(id) => {this.elementDelete(id)}}
+                      onDeleted={(id) => {
+                          this.elementDelete(id)
+                      }}
                       check={this.selectorDone}
                       star={this.selectorImportant}/>
                 <AddButton add={this.elementAdd}/>
