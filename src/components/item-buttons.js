@@ -2,6 +2,7 @@ import React from 'react';
 
 const ItemButtons = (props) => {
 
+    const {star, check, trash}=props
     return (
         <div className="row float-right">
 
@@ -9,7 +10,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-warning float-right" type="button"
                         onClick={() => {
-                            props.star()
+                            star()
                         }}>
                     <i className="fa fa-star"> </i>
                 </button>
@@ -19,7 +20,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-success float-right" type="button"
                         onClick={() => {
-                            props.check()
+                            check()
                         }}>
                     <i className="fa fa-check"> </i>
                 </button>
@@ -29,7 +30,7 @@ const ItemButtons = (props) => {
             <div className="col-auto">
                 <button className="btn btn-outline-secondary float-right" type="button"
                         onClick={() => {
-                            props.trash()
+                            trash()
                         }}>
                     <i className="fa fa-trash"> </i>
                 </button>
