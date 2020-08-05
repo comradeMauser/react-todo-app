@@ -9,6 +9,7 @@ export default class App extends React.Component {
     constructor() {
         super();
 
+        //sets the local id
         this.syntheticId = 0;
 
         //create new element
@@ -59,43 +60,39 @@ export default class App extends React.Component {
             })
         }
 
+        //change element field property
+        this.selectorProperty = (stateArray, id, selectorName) => {
+            console.error(id, `${selectorName}`);
 
-        this.selectorDone = (id) => {
-            console.error(id, "Done");
+            const index = stateArray.findIndex((element) => element.id === id)
+            const prevElement = stateArray[index]
+            const newElement = {
+                ...prevElement,
+                [selectorName]: !prevElement[selectorName]
+            }
 
-            this.setState(({elements}) => {
-                const index = elements.findIndex((element) => element.id === id)
-                const prevElement = elements[index]
-                const newElement = {...prevElement, done: !prevElement.done}
-
-                const result = [
-                    ...elements.slice(0, index),
-                    newElement,
-                    ...elements.slice(index + 1)
-                ]
-
-                return {
-                    elements: result
-                }
-            })
+            return [
+                ...stateArray.slice(0, index),
+                newElement,
+                ...stateArray.slice(index + 1)
+            ]
         }
 
-        this.selectorImportant = (id) => {
-            console.error(id, "Important");
-
+        //selectorProperty for done
+        this.selectorDone = (id) => {
             this.setState(({elements}) => {
-                const index = elements.findIndex((element) => element.id === id)
-                const prevElement = elements[index]
-                const newElement = {...prevElement, important: !prevElement.important}
-
-                const result = [
-                    ...elements.slice(0, index),
-                    newElement,
-                    ...elements.slice(index + 1)
-                ]
-
                 return {
-                    elements: result
+                    elements: this.selectorProperty(elements, id, "done")
+                }
+            })
+
+        }
+
+        //selectorProperty for important
+        this.selectorImportant = (id) => {
+            this.setState(({elements}) => {
+                return {
+                    elements: this.selectorProperty(elements, id, "important")
                 }
             })
         }
@@ -113,6 +110,7 @@ export default class App extends React.Component {
             <div className="container">
                 <Header total={total} done={count}/>
                 <SearchPanel/>
+                <AddButton add={this.elementAdd}/>
                 <List listElements={elements}
                       onDeleted={(id) => {
                           this.elementDelete(id)
