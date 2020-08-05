@@ -27,8 +27,6 @@ export default class App extends React.Component {
                 this.createElement("drink all coffee"),
                 this.createElement("run in circles and scream"),
                 this.createElement("do something"),
-                this.createElement(),
-                this.createElement(this.syntheticId),
             ]
         };
 
@@ -110,7 +108,6 @@ export default class App extends React.Component {
             <div className="container">
                 <Header total={total} done={count}/>
                 <SearchPanel/>
-                <AddButton add={this.elementAdd}/>
                 <List listElements={elements}
                       onDeleted={(id) => {
                           this.elementDelete(id)
