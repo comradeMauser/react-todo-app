@@ -17,7 +17,7 @@ export default class App extends React.Component {
                 label: `${this.syntheticId} - ${label}`,
                 id: this.syntheticId++,
                 important: false,
-                done: false
+                done: false,
             }
         }
 
@@ -47,7 +47,6 @@ export default class App extends React.Component {
             )
         }
 
-
         //adds new element to state with createElement()
         this.elementAdd = (text) => {
             const newElement = this.createElement(text)
@@ -59,6 +58,7 @@ export default class App extends React.Component {
                 }
             })
         }
+
 
         this.selectorDone = (id) => {
             console.error(id, "Done");
@@ -74,27 +74,44 @@ export default class App extends React.Component {
                     ...elements.slice(index + 1)
                 ]
 
-                return{
+                return {
                     elements: result
                 }
             })
-
-
         }
 
         this.selectorImportant = (id) => {
             console.error(id, "Important");
+
+            this.setState(({elements}) => {
+                const index = elements.findIndex((element) => element.id === id)
+                const prevElement = elements[index]
+                const newElement = {...prevElement, important: !prevElement.important}
+
+                const result = [
+                    ...elements.slice(0, index),
+                    newElement,
+                    ...elements.slice(index + 1)
+                ]
+
+                return {
+                    elements: result
+                }
+            })
         }
+
 
     }
 
 
     render() {
         const {elements} = this.state
+        const total = elements.length
+        const count = elements.filter((element) => element.done).length;
 
         return (
             <div className="container">
-                <Header undone={elements.length}/>
+                <Header total={total} done={count}/>
                 <SearchPanel/>
                 <List listElements={elements}
                       onDeleted={(id) => {
