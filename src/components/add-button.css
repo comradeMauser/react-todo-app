@@ -1,0 +1,13 @@
+:hover.btn.btn-dark.btn-lg.btn-block {
+    border-color: red;
+}
+
+.addButton {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    margin-right: 3px;
+    color: red;
+}

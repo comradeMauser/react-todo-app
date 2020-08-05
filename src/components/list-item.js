@@ -3,38 +3,6 @@ import ItemButtons from "./item-buttons";
 import "./list-item.css"
 
 const ListItem = (props) => {
-    /*
-
-        constructor() {
-            super();
-
-            this.state = {
-                done: false,
-                important: false,
-            }
-
-            // end column style changes to completed
-            this.check = () => {
-                console.log("check", this.props.id, "class ListItem");
-                this.setState(({done}) => {
-                    return {
-                        done: !done
-                    }
-                })
-            }
-
-            // end column style changes to important
-            this.star = () => {
-                console.log("star", this.props.id, "class ListItem");
-                this.setState(({important}) => {
-                    return {
-                        important: !important
-                    }
-                })
-            }
-        }
-    */
-
     const {star, check, onDeleted, label, important, done} = props
 
     //end column style
@@ -53,6 +21,9 @@ const ListItem = (props) => {
                 <span className={colClassNames}
                       onClick={() => {
                           check()
+                      }}
+                      onDoubleClick={() => {
+                          star()
                       }}>
                     {label}
                 </span>

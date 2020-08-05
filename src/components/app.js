@@ -9,6 +9,7 @@ export default class App extends React.Component {
     constructor() {
         super();
 
+        //sets the local id
         this.syntheticId = 0;
 
         //create new element
@@ -17,7 +18,7 @@ export default class App extends React.Component {
                 label: `${this.syntheticId} - ${label}`,
                 id: this.syntheticId++,
                 important: false,
-                done: false
+                done: false,
             }
         }
 
@@ -26,8 +27,6 @@ export default class App extends React.Component {
                 this.createElement("drink all coffee"),
                 this.createElement("run in circles and scream"),
                 this.createElement("do something"),
-                this.createElement(),
-                this.createElement(this.syntheticId),
             ]
         };
 
@@ -47,7 +46,6 @@ export default class App extends React.Component {
             )
         }
 
-
         //adds new element to state with createElement()
         this.elementAdd = (text) => {
             const newElement = this.createElement(text)
@@ -60,41 +58,55 @@ export default class App extends React.Component {
             })
         }
 
+        //change element field property
+        this.selectorProperty = (stateArray, id, selectorName) => {
+            console.error(id, `${selectorName}`);
+
+            const index = stateArray.findIndex((element) => element.id === id)
+            const prevElement = stateArray[index]
+            const newElement = {
+                ...prevElement,
+                [selectorName]: !prevElement[selectorName]
+            }
+
+            return [
+                ...stateArray.slice(0, index),
+                newElement,
+                ...stateArray.slice(index + 1)
+            ]
+        }
+
+        //selectorProperty for done
         this.selectorDone = (id) => {
-            console.error(id, "Done");
-
             this.setState(({elements}) => {
-                const index = elements.findIndex((element) => element.id === id)
-                const prevElement = elements[index]
-                const newElement = {...prevElement, done: !prevElement.done}
-
-                const result = [
-                    ...elements.slice(0, index),
-                    newElement,
-                    ...elements.slice(index + 1)
-                ]
-
-                return{
-                    elements: result
+                return {
+                    elements: this.selectorProperty(elements, id, "done")
                 }
             })
 
-
         }
 
+        //selectorProperty for important
         this.selectorImportant = (id) => {
-            console.error(id, "Important");
+            this.setState(({elements}) => {
+                return {
+                    elements: this.selectorProperty(elements, id, "important")
+                }
+            })
         }
+
 
     }
 
 
     render() {
         const {elements} = this.state
+        const total = elements.length
+        const count = elements.filter((element) => element.done).length;
 
         return (
             <div className="container">
-                <Header undone={elements.length}/>
+                <Header total={total} done={count}/>
                 <SearchPanel/>
                 <List listElements={elements}
                       onDeleted={(id) => {

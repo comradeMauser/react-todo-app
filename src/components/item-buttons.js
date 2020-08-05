@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ItemButtons = (props) => {
+    const {star, check, trash} = props
 
-    const {star, check, trash}=props
     return (
         <div className="row float-right">
 
