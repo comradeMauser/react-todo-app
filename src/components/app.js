@@ -96,17 +96,19 @@ export default class App extends React.Component {
             })
         }
 
-
-        this.search = (elements, searchValue) => {
+        //return filtered elements to list
+        this.searchFilter = (elements, searchValue) => {
+            if (searchValue.length === 0) {
+                return elements
+            }
             return elements.filter(
                 (element) => element.label.indexOf(searchValue) > -1
             )
         }
 
+        //sets form value(search-panel) to state
         this.formSearch = (event) => {
             this.setState({formSearch: event.target.value})
-            console.debug("this.state.formformSearch:", this.state.formSearch)
-            console.debug("event.target.value:", event.target.value)
         }
 
     }
@@ -116,14 +118,14 @@ export default class App extends React.Component {
         const total = elements.length
         const count = elements.filter((element) => element.done).length;
 
-        const sight = this.search(elements, formSearch)
+        const sights = this.searchFilter(elements, formSearch) //all visible elements
 
         return (
             <div className="container">
 
                 <Header total={total} done={count}/>
                 <SearchPanel formChange={this.formSearch}/>
-                <List listElements={sight}
+                <List listElements={sights}
                       onDeleted={(id) => {
                           this.elementDelete(id)
                       }}
