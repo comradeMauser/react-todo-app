@@ -15,7 +15,7 @@ export default class App extends React.Component {
         //create new element
         this.createElement = (label = "default message") => {
             return {
-                label: `${this.syntheticId} - ${label}`,
+                label: `${label}`,
                 id: this.syntheticId++,
                 important: false,
                 done: false,
@@ -27,7 +27,8 @@ export default class App extends React.Component {
                 this.createElement("drink all coffee"),
                 this.createElement("run in circles and scream"),
                 this.createElement("do something"),
-            ]
+            ],
+            formSearch: ""
         };
 
         //removing element by index
@@ -96,19 +97,33 @@ export default class App extends React.Component {
         }
 
 
+        this.search = (elements, searchValue) => {
+            return elements.filter(
+                (element) => element.label.indexOf(searchValue) > -1
+            )
+        }
+
+        this.formSearch = (event) => {
+            this.setState({formSearch: event.target.value})
+            console.debug("this.state.formformSearch:", this.state.formSearch)
+            console.debug("event.target.value:", event.target.value)
+        }
+
     }
 
-
     render() {
-        const {elements} = this.state
+        const {elements, formSearch} = this.state
         const total = elements.length
         const count = elements.filter((element) => element.done).length;
 
+        const sight = this.search(elements, formSearch)
+
         return (
             <div className="container">
+
                 <Header total={total} done={count}/>
-                <SearchPanel/>
-                <List listElements={elements}
+                <SearchPanel formChange={this.formSearch}/>
+                <List listElements={sight}
                       onDeleted={(id) => {
                           this.elementDelete(id)
                       }}
