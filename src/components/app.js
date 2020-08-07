@@ -102,7 +102,7 @@ export default class App extends React.Component {
                 return elements
             }
             return elements.filter(
-                (element) => element.label.indexOf(searchValue) > -1
+                (element) => element.label.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
             )
         }
 
