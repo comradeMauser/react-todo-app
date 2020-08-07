@@ -5,6 +5,7 @@
 
 .col.done {
     text-decoration-line: line-through;
+    color: #515151;
 }
 
 .col.important {
