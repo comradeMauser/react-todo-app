@@ -1,23 +1,31 @@
 import React from 'react';
 import "./search-panel.css";
 
-export default class SearchPanel extends React.Component {
+const SearchPanel = (props) => {
+    const {formChange, activeElements} = props
 
-    state = {
-        formSearch: ""
-    }
+    return (
+        <div className="form-inline justify-content-center">
+            <input className="form-control" placeholder="search"
+                   onChange={formChange}/>
 
-    render() {
-        return (
-            <div className="form-inline justify-content-center">
-                <input className="form-control" placeholder="search"
-                       onChange={this.props.formChange}/>
-                <div className="btn-group-append" role="group">
-                    <button type="button" className="btn btn-dark">first</button>
-                    <button type="button" className="btn btn-dark">second</button>
-                    <button type="button" className="btn btn-dark">third</button>
-                </div>
+            <div className="btn-group-append-toggle" role="group">
+                <button type="button" className="btn btn-dark">first</button>
+
+                <button type="button" className="btn btn-dark"
+                        onClick={() => {
+                            activeElements("important")
+                        }}>important
+                </button>
+
+                <button type="button" className="btn btn-dark"
+                        onClick={() => {
+                            activeElements("done")
+                        }}>done
+                </button>
             </div>
-        )
-    }
+        </div>
+    )
 };
+
+export default SearchPanel;
