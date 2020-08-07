@@ -115,10 +115,8 @@ export default class App extends React.Component {
         this.activeElements = (status) => {
             this.setState(({dashboardStatus}) => {
                 if (dashboardStatus === status) {
-                    console.log(dashboardStatus);
                     return {dashboardStatus: "all"}
                 }
-                console.log(dashboardStatus);
                 return {dashboardStatus: status}
             })
         }
@@ -131,22 +129,20 @@ export default class App extends React.Component {
         const count = elements.filter((element) => element.done).length
 
         const result = () => {
-
             switch (dashboardStatus) {
                 case "all":
-                    console.debug("All");
                     return elements
                 case "important":
-                    console.debug("important");
                     return elements.filter((element) => element.important)
                 case "done":
-                    console.debug("done");
                     return elements.filter((element) => element.done)
                 default:
                     console.error("retard!")
             }
 
         }
+
+        //dostoprimechatel`nosti
         const sights = this.searchFilter(result(), formSearch); //all visible elements
 
 
