@@ -28,7 +28,8 @@ export default class App extends React.Component {
                 this.createElement("run in circles and scream"),
                 this.createElement("do something"),
             ],
-            formSearch: ""
+            formSearch: "",
+            dashboardStatus: "all",
         };
 
         //removing element by index
@@ -111,20 +112,55 @@ export default class App extends React.Component {
             this.setState({formSearch: event.target.value})
         }
 
+        this.activeElements = (status) => {
+            this.setState(({dashboardStatus}) => {
+                if (dashboardStatus === status) {
+                    console.log(dashboardStatus);
+                    return {dashboardStatus: "all"}
+                }
+                console.log(dashboardStatus);
+                return {dashboardStatus: status}
+            })
+        }
+
     }
 
     render() {
-        const {elements, formSearch} = this.state
+        const {elements, formSearch, dashboardStatus} = this.state
         const total = elements.length
-        const count = elements.filter((element) => element.done).length;
+        const count = elements.filter((element) => element.done).length
 
-        const sights = this.searchFilter(elements, formSearch) //all visible elements
+        const result = () => {
+
+            switch (dashboardStatus) {
+                case "all":
+                    console.debug("All");
+                    return elements
+                case "important":
+                    console.debug("important");
+                    return elements.filter((element) => element.important)
+                case "done":
+                    console.debug("done");
+                    return elements.filter((element) => element.done)
+                default:
+                    console.error("retard!")
+            }
+
+        }
+        const sights = this.searchFilter(result(), formSearch); //all visible elements
+
 
         return (
             <div className="container">
 
+                <button className="btn-lg btn-block"
+                        onClick={() => {
+                            console.debug(dashboardStatus)
+                        }}>status
+                </button>
+
                 <Header total={total} done={count}/>
-                <SearchPanel formChange={this.formSearch}/>
+                <SearchPanel formChange={this.formSearch} activeElements={this.activeElements}/>
                 <List listElements={sights}
                       onDeleted={(id) => {
                           this.elementDelete(id)

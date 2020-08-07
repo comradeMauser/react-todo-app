@@ -2,10 +2,7 @@ import React from 'react';
 
 const Header = (props) => {
     const date = new Date().toLocaleString()
-
-    //temporary plug
     const {done, total} = props
-
 
     return (
         <div>
