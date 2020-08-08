@@ -13,7 +13,7 @@ export default class App extends React.Component {
         this.syntheticId = 0;
 
         //create new element
-        this.createElement = (label = "default message") => {
+        this.elementCreate = (label = "default message") => {
             return {
                 label: `${label}`,
                 id: this.syntheticId++,
@@ -24,9 +24,9 @@ export default class App extends React.Component {
 
         this.state = {
             elements: [
-                this.createElement("drink all coffee"),
-                this.createElement("run in circles and scream"),
-                this.createElement("do something"),
+                this.elementCreate("drink all coffee"),
+                this.elementCreate("run in circles and scream"),
+                this.elementCreate("do something"),
             ],
             formSearch: "",
             dashboardStatus: "all",
@@ -48,9 +48,9 @@ export default class App extends React.Component {
             )
         }
 
-        //adds new element to state with createElement()
+        //adds new element to state with elementCreate()
         this.elementAdd = (text) => {
-            const newElement = this.createElement(text)
+            const newElement = this.elementCreate(text)
 
             this.setState(({elements}) => {
                 const result = [...elements, newElement]
@@ -156,7 +156,10 @@ export default class App extends React.Component {
                 </button>
 
                 <Header total={total} done={count}/>
-                <SearchPanel formChange={this.formSearch} activeElements={this.activeElements}/>
+                <SearchPanel formChange={this.formSearch}
+                             activeElements={this.activeElements}
+                             dashboardStatus={dashboardStatus}
+                />
                 <List listElements={sights}
                       onDeleted={(id) => {
                           this.elementDelete(id)
