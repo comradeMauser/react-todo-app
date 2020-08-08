@@ -2,7 +2,7 @@ import React from 'react';
 import "./search-panel.css";
 
 const SearchPanel = (props) => {
-    const {formChange, activeElements, dashboardStatus} = props
+    const {formChange, activeElements} = props
 
 /*
     const classes = [
