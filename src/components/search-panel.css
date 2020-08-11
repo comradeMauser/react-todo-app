@@ -6,7 +6,7 @@
     background-color: #515151;
 }
 
-:hover.form-control{
+:hover.form-control {
     border-color: red;
 }
 
@@ -17,4 +17,8 @@
 .btn-group-append .btn {
     margin-left: 1px;
     margin-right: 1px;
+}
+
+:hover.btn {
+    border-color: red;
 }
