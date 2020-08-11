@@ -148,13 +148,14 @@ export default class App extends React.Component {
 
         return (
             <div className="container">
+                {/*
 
                 <button className="btn-lg btn-block"
                         onClick={() => {
                             console.debug(dashboardStatus)
                         }}>status
                 </button>
-
+*/}
                 <Header total={total} done={count}/>
                 <SearchPanel formChange={this.formSearch}
                              activeElements={this.activeElements}
